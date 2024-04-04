@@ -1,4 +1,4 @@
-# Logicer's ESLint Base Configuration
+# Logicer's Typescript Utility Types
 
 [![npm (scoped)](https://img.shields.io/npm/v/%40logicer/util-types)](https://www.npmjs.com/package/@logicer/util-types)
 [![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/Logicer16/util-types/style.yml)](https://github.com/Logicer16/util-types/actions)
