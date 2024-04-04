@@ -39,7 +39,7 @@ jobs:
         run: pnpm type-coverage
 
       - name: Run ESLint
-        run: pnpm lint:ci -- --output-file .eslint_report.json --format json
+        run: pnpm lint:ci --output-file .eslint_report.json --format json
         continue-on-error: true
 
       - name: Annotate ESLint Results
