@@ -1,10 +1,15 @@
+/**
+ * @file The module's exports.
+ */
+/* eslint-disable import/export */
+
 export namespace Unsafe {
-  export {Unsafe as UnionMax} from "./UnionMax.d.ts";
-  export {Unsafe as IntRange} from "./IntRange.d.ts";
-  export {Unsafe as Arithmetic} from "@logicer/ts-arithmetic";
+  export type {Unsafe as UnionMax} from "./UnionMax.d.ts";
+  export type {Unsafe as IntRange} from "./IntRange.d.ts";
+  export type {Unsafe as Arithmetic} from "@logicer/ts-arithmetic";
 }
 
 export * from "./UnionMax.d.ts";
 export * from "./IntRange.d.ts";
-export * from "./combinations.d.ts";
+export * from "./unionsAndIntersections.ts";
 export * from "@logicer/ts-arithmetic";

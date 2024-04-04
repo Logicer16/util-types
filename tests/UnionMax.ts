@@ -1,11 +1,13 @@
-import type {UnionMax, IntRange} from "@logicer/util-types";
-import {type} from "os";
+/**
+ * @file Testing the `UnionMax` type.
+ */
+import type {UnionMax} from "@logicer/util-types";
 
 // Bounds:
 
 type MaxRangedResult = UnionMax<6327 | 6328>;
 const valid: MaxRangedResult = 6328;
-// @ts-expect-error
+// @ts-expect-error TS2322
 const oneOverAny: MaxRangedResult = 10;
 
 // Documentation Examples:
@@ -75,6 +77,6 @@ const overNineThousandMaxE: OverNineThousandMax = 9040;
 type AnyOverNineThousandMax = number extends OverNineThousandMax ? true : false;
 const anyOverNineThousandMax: AnyOverNineThousandMax = false;
 
-type EarlyExit = UnionMax<1 | 1000000>;
+type EarlyExit = UnionMax<1 | 1_000_000>;
 type AnyEarlyExit = number extends EarlyExit ? true : false;
 const anyEarlyExit: AnyEarlyExit = false;

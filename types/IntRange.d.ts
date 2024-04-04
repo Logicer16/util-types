@@ -1,10 +1,17 @@
 /**
- * @file Utility Types.
+ * @file Generate a union of a range of numeric literals.
  */
 import type {Add, Compare, Subtract} from "@logicer/ts-arithmetic";
 
 export namespace Unsafe {
-  type Enumerate<
+  /**
+   * Recursively enumerate over a given range, producing an array consisting of numeric literals of the numbers within that range.
+   * @param End The value at which the range terminates (exclusive).
+   * @param Start The value at which the range begins (inclusive).
+   * @param Accumulator The array to add values to.
+   * @returns {number[]} The modified `Accumulator`.
+   */
+  export type Enumerate<
     End extends number,
     Start extends number = 0,
     Accumulator extends number[] = []
@@ -17,7 +24,18 @@ export namespace Unsafe {
           [...Accumulator, Add<Accumulator["length"], Start>]
         >;
 
-  type BigEnumerate<
+  /**
+   * Iteratively use a type to enumerate over a given range, producing union whose constituents are the numeric literals of the numbers within that range.
+   * @param End The value at which the range terminates (exclusive).
+   * @param Start The value at which the range begins (inclusive).
+   * @param Fallback The type to return when the depth is exhausted.
+   * @param DepthRemaining The remaining recursion depth available for types.
+   * @param Accumulator The array to add values to.
+   * @param ExpectedLength The computed length the accumulator is expected to be once the entire range has been enumerated.
+   * @param NewStart The computed start value of subsequent iterations.
+   * @returns {number} The modified `Accumulator`.
+   */
+  export type BigEnumerate<
     End extends number,
     Start extends number = 0,
     Fallback = number,
@@ -53,9 +71,12 @@ export namespace Unsafe {
 /**
  * Generate a union of number literals within a specified range.
  *
- * Inclusive of `Start`; Exclusive of `End`.
+ * If start is greater than end, `number` will be returned.
  *
- * The maximum number of union items is 7260 due to typescript limitations (cumulative type instantiation). If the range exceeds this limit, it will default to `number`.
+ * The maximum number of union items is 7260 due to other [typescript limitations](https://github.com/Logicer16/util-types?tab=readme-ov-file#limitations). If the range exceeds this limit, `number` will be returned instead.
+ * @param Start The start value of the range produced (inclusive).
+ * @param End The end value of the range produced (exclusive).
+ * @returns {number} A union of number literals within the specified range.
  */
 export type IntRange<
   Start extends number,

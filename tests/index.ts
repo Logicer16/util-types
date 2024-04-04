@@ -1,4 +1,7 @@
-import type {UnionMax, IntRange} from "@logicer/util-types";
+/**
+ * @file Testing the interactions of between types in the package.
+ */
+import type {IntRange, UnionMax} from "@logicer/util-types";
 
 // Documentation Examples:
 

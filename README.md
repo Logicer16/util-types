@@ -11,8 +11,10 @@ Contents:
 
 - [Install](#install)
 - [Exports](#exports)
-  - [IntRange](#intrange)
-  - [UnionMax](#unionmax)
+  - [`IntRange`](#intrange)
+  - [`UnionMax`](#unionmax)
+  - [`UnionToIntersection`](#uniontointersection)
+  - [`IsUnion`](#isunion)
   - [Arithmetic](#arithmetic)
   - [Unsafe](#unsafe)
 - [Limitations](#limitations)
@@ -25,9 +27,9 @@ npm install --save-dev typescript @logicer/util-types
 
 ## Exports
 
-### IntRange
+### `IntRange`
 
-Generate a union of numbers within a certain range. Accepts a start to the range (inclusive) and an end to the range (exclusive). If start is greater than end, `number` will be returned.
+Generate a union of number literals within a certain range. Accepts a start to the range (inclusive) and an end to the range (exclusive). If start is greater than end, `number` will be returned.
 
 The number of items in the resulting union is limited to 7260 due to other [typescript limitations](#limitations). If the range exceeds this limit, `number` will be returned instead.
 
@@ -52,7 +54,7 @@ type BiggestNumbers = IntRange<1, 5001>;
 type OverNineThousand = IntRange<9001, 10000>;
 ```
 
-### UnionMax
+### `UnionMax`
 
 Find the greatest number in a union of numeric type literals. Accepts a union of numeric type literal and lower bound to begin searching at (inclusive). If the lower bound is greater than the lowest value in the union, `number` will be returned.
 
@@ -84,6 +86,37 @@ type OverNineThousandMax = UnionMax<9010 | 9020 | 9030 | 9040 | 9050, 9000>;
 type EarlyExit = UnionMax<1 | 1000000>;
 ```
 
+### `UnionToIntersection`
+
+Creates an intersection from a union's constituent types.
+
+```ts
+import type {UnionToIntersection} from "@logicer/util-types";
+
+type A = {one: 1};
+type B = {two: 2};
+type C = {three: 3};
+
+type Union = A | B | C;
+
+// {one: 1, two: 2, three: 3}
+type Intersection = UnionToIntersection<Union>;
+```
+
+### `IsUnion`
+
+Returns a true if a type is a union and otherwise false.
+
+```ts
+import type {IsUnion} from "@logicer/util-types";
+
+// true
+type IsUnionTrue = IsUnion<1 | 2 | 3>;
+
+// false
+type IsUnionFalse = IsUnion<1>;
+```
+
 ### Arithmetic
 
 Re-exports the types from [`ts-arithmetic`](https://github.com/Logicer16/ts-arithmetic)
@@ -102,7 +135,7 @@ import type {UnionMax, IntRange} from "@logicer/util-types";
 
 // Works without error
 type range = IntRange<0, 6000>;
-// Note: must iterate from 0 to 6000
+// Note: must iterate from 0 to 5999
 type max = UnionMax<5999 | 6000>;
 
 // Typescript throws TS2589: Type instantiation is excessively deep and possibly infinite.

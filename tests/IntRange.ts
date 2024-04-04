@@ -1,10 +1,13 @@
+/**
+ * @file Testing the `IntRange` type.
+ */
 import type {IntRange} from "@logicer/util-types";
 
 // Bounds:
 
 type MaxRange = IntRange<0, 7260>;
 const valid: MaxRange[] = [0, 7259];
-// @ts-expect-error
+// @ts-expect-error TS2322
 const oneOverAny: MaxRange = 7260;
 
 // Documentation Examples:
@@ -45,13 +48,13 @@ const biggestNumbersC: Numbers = 5001;
 type AnyBiggestNumbers = number extends BiggestNumbers ? true : false;
 const anyBiggestNumber: AnyBiggestNumbers = false;
 
-type OverNineThousand = IntRange<9001, 10000>;
+type OverNineThousand = IntRange<9001, 10_000>;
 const overNineThousandA: OverNineThousand[] = [
   9001, 9200, 9400, 9600, 9800, 9999
 ];
 // @ts-expect-error TS2322
 const overNineThousandB: OverNineThousand = 9000;
 // @ts-expect-error TS2322
-const overNineThousandC: OverNineThousand = 10000;
+const overNineThousandC: OverNineThousand = 10_000;
 type AnyOverNineThousand = number extends OverNineThousand ? true : false;
 const anyOverNineThousand: AnyOverNineThousand = false;

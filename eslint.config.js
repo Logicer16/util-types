@@ -31,7 +31,7 @@ const ignores = [
 /**
  * @type {import("eslint").Linter.FlatConfig[]}
  */
-const eslintPluginConfigs = [
+const utilTypesConfigs = [
   {
     languageOptions: {
       ecmaVersion: 2024,
@@ -57,6 +57,13 @@ const eslintPluginConfigs = [
     rules: {
       "@typescript-eslint/naming-convention": "off"
     }
+  },
+  {
+    files: ["tests/**/*"],
+    rules: {
+      "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/no-unused-vars": "off"
+    }
   }
 ];
 
@@ -66,7 +73,7 @@ const eslintPluginConfigs = [
 const config = [
   {ignores},
   ...(await generator.config),
-  ...eslintPluginConfigs,
+  ...utilTypesConfigs,
   ...(await generator.endConfig)
 ];
 
