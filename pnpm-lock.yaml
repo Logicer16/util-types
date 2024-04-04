@@ -18,7 +18,7 @@ devDependencies:
     version: 2.1.0(@types/eslint@8.56.7)(eslint@8.57.0)(prettier@3.2.5)(svelte@4.2.12)(typescript@5.4.3)
   '@logicer/tsconfig':
     specifier: ^5.0.0
-    version: 5.0.1(ts-plugin-type-coverage@2.27.2)(typescript@5.4.3)
+    version: 5.0.1(ts-plugin-type-coverage@2.28.1)(typescript@5.4.3)
   '@logicer/util-types':
     specifier: link:.
     version: 'link:'
@@ -35,8 +35,8 @@ devDependencies:
     specifier: 3.2.5
     version: 3.2.5
   ts-plugin-type-coverage:
-    specifier: ^2.26.4
-    version: 2.27.2(typescript@5.4.3)
+    specifier: ^2.28.1
+    version: 2.28.1(typescript@5.4.3)
   type-coverage:
     specifier: ^2.27.0
     version: 2.27.2(typescript@5.4.3)
@@ -274,14 +274,14 @@ packages:
     resolution: {integrity: sha512-+KYPmf9xGNtWhxs2dm7AU3usjKVD5o5P/DyhHN6Bnu32W3ErJzCb0+/y/E8qvUQr8GMHE/AZmPf4mM8HgwDHTw==}
     dev: false
 
-  /@logicer/tsconfig@5.0.1(ts-plugin-type-coverage@2.27.2)(typescript@5.4.3):
+  /@logicer/tsconfig@5.0.1(ts-plugin-type-coverage@2.28.1)(typescript@5.4.3):
     resolution: {integrity: sha512-0CViQhdEoKimtPHql90TaNstkE8rl9Ml6xweb88ksefWcIupET4Sk5sK8P4BKJIQUBdxPpWOzhpfWUzT+jf1PQ==}
     engines: {pnpm: '>=8.10.0'}
     peerDependencies:
       ts-plugin-type-coverage: ^2.27.1
       typescript: '>=5.4.2'
     dependencies:
-      ts-plugin-type-coverage: 2.27.2(typescript@5.4.3)
+      ts-plugin-type-coverage: 2.28.1(typescript@5.4.3)
       typescript: 5.4.3
     dev: true
 
@@ -584,6 +584,7 @@ packages:
 
   /brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
+    requiresBuild: true
     dependencies:
       balanced-match: 1.0.2
       concat-map: 0.0.1
@@ -723,6 +724,7 @@ packages:
 
   /concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
+    requiresBuild: true
     dev: true
 
   /core-js-compat@3.36.1:
@@ -2283,13 +2285,13 @@ packages:
     dev: true
     optional: true
 
-  /ts-plugin-type-coverage@2.27.2(typescript@5.4.3):
-    resolution: {integrity: sha512-ONCUpyQOWFH/kunugC5JoFrLqaGeq4dD4mPSb4QnGaHbgoJw8hQSO3Nb7Smmw9JANcRPfcAyhWv7cJTIapWdJw==}
+  /ts-plugin-type-coverage@2.28.1(typescript@5.4.3):
+    resolution: {integrity: sha512-opRsbzbcTF9cYXGYAAt0qb5fg+qAt3nz96fyX4Afb0xu+vGH7+bcrvVW5EwC5kicNLCs/cYPKovDeCAD9Wgjzg==}
     peerDependencies:
       typescript: 2 || 3 || 4 || 5
     dependencies:
       tslib: 2.6.2
-      type-coverage-core: 2.27.2(typescript@5.4.3)
+      type-coverage-core: 2.28.1(typescript@5.4.3)
       typescript: 5.4.3
     dev: true
 
@@ -2321,6 +2323,19 @@ packages:
 
   /type-coverage-core@2.27.2(typescript@5.4.3):
     resolution: {integrity: sha512-Iehy4Ap4n0DR21ag4YIIyU5kiRwvohRel37vfMbA0MP7/XMmm1UCfCb2Cz/WNLej/f/TlLwqg5RBgoR6kqoZ0g==}
+    peerDependencies:
+      typescript: 2 || 3 || 4 || 5
+    dependencies:
+      fast-glob: 3.3.2
+      minimatch: 9.0.4
+      normalize-path: 3.0.0
+      tslib: 2.6.2
+      tsutils: 3.21.0(typescript@5.4.3)
+      typescript: 5.4.3
+    dev: true
+
+  /type-coverage-core@2.28.1(typescript@5.4.3):
+    resolution: {integrity: sha512-NniLJtLiDg0+dhrf/9ACGwi3OAhIfvd20f1CB0yxIUBMECwmJp7e7me3lM8djkrDBJtqSY+uXA6PRs+yv3HTnA==}
     peerDependencies:
       typescript: 2 || 3 || 4 || 5
     dependencies:
