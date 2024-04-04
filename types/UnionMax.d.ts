@@ -2,7 +2,7 @@
  * @file Find the greatest numeric literal in a union.
  */
 import type {Add, Subtract} from "@logicer/ts-arithmetic";
-import type {UnionToIntersection} from "./unionsAndIntersections.ts";
+import type {UnionToIntersection} from "./unionsAndIntersections.d.ts";
 
 export namespace Unsafe {
   /**

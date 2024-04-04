@@ -11,5 +11,5 @@ export namespace Unsafe {
 
 export * from "./UnionMax.d.ts";
 export * from "./IntRange.d.ts";
-export * from "./unionsAndIntersections.ts";
+export * from "./unionsAndIntersections.d.ts";
 export * from "@logicer/ts-arithmetic";
