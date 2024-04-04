@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^2.26.4
     version: 2.27.2(typescript@5.4.3)
   type-coverage:
-    specifier: ^2.27.0
-    version: 2.27.2(typescript@5.4.3)
+    specifier: ^2.28.1
+    version: 2.28.1(typescript@5.4.3)
   typescript:
     specifier: ^5.3.3
     version: 5.4.3
@@ -2332,12 +2332,25 @@ packages:
       typescript: 5.4.3
     dev: true
 
-  /type-coverage@2.27.2(typescript@5.4.3):
-    resolution: {integrity: sha512-PxtgwMd5eXetrxemwd4Jiufj33erMc9UZLaN4jsCO4a1Xb6bLHJBeS+4XM6lSdY1Qe50BpNda4Lk1pZqVFJ20A==}
+  /type-coverage-core@2.28.1(typescript@5.4.3):
+    resolution: {integrity: sha512-NniLJtLiDg0+dhrf/9ACGwi3OAhIfvd20f1CB0yxIUBMECwmJp7e7me3lM8djkrDBJtqSY+uXA6PRs+yv3HTnA==}
+    peerDependencies:
+      typescript: 2 || 3 || 4 || 5
+    dependencies:
+      fast-glob: 3.3.2
+      minimatch: 9.0.4
+      normalize-path: 3.0.0
+      tslib: 2.6.2
+      tsutils: 3.21.0(typescript@5.4.3)
+      typescript: 5.4.3
+    dev: true
+
+  /type-coverage@2.28.1(typescript@5.4.3):
+    resolution: {integrity: sha512-nFpCkjyDPA+QeA0aRp3mVJ/XccounJ0Ls5IXVlCKI3XCQPzO3QFUl5zjFnmulw8hWe+r9u9EFjDsAxp8PnLMvQ==}
     hasBin: true
     dependencies:
       minimist: 1.2.8
-      type-coverage-core: 2.27.2(typescript@5.4.3)
+      type-coverage-core: 2.28.1(typescript@5.4.3)
     transitivePeerDependencies:
       - typescript
     dev: true

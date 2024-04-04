@@ -39,7 +39,7 @@
     "eslint": "^8.56.0",
     "prettier": "3.2.5",
     "ts-plugin-type-coverage": "^2.26.4",
-    "type-coverage": "^2.27.0",
+    "type-coverage": "^2.28.1",
     "typescript": "^5.3.3"
   },
   "typeCoverage": {
