@@ -1,0 +1,10 @@
+{
+  "prettier.prettierPath": "./node_modules/prettier",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "markdown.extension.toc.levels": "2..6",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

@@ -1,0 +1,43 @@
+name: Publish Package
+on:
+  release:
+    types: [published]
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ">=8.10"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: "https://registry.npmjs.org"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test
+        run: pnpm test
+
+      - name: Run ESLint
+        run: pnpm lint:ci
+
+      - name: Run Prettier
+        run: pnpm prettier:ci
+
+      # Important as this is a type package.
+      - name: Type Converage
+        run: pnpm type-coverage
+
+      - name: Publish to npm
+        run: pnpm publish --access public --no-git-checks
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

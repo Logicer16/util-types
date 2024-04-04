@@ -1,0 +1,54 @@
+name: Style
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  Style:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+
+    permissions:
+      checks: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ">=8.10"
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test
+        run: pnpm test
+
+      - name: Type Converage
+        run: pnpm type-coverage
+
+      - name: Run ESLint
+        run: pnpm lint:ci -- --output-file .eslint_report.json --format json
+        continue-on-error: true
+
+      - name: Annotate ESLint Results
+        uses: ataylorme/eslint-annotate-action@v3-beta
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          report-json: .eslint_report.json
+          fail-on-warning: true
+          markdown-report-on-step-summary: true
+
+      - name: Run Prettier
+        run: pnpm prettier:ci
