@@ -62,6 +62,8 @@ const utilTypesConfigs = [
     files: ["tests/**/*"],
     rules: {
       "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/no-empty-interface": "off",
+      "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "off"
     }
   }

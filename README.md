@@ -11,11 +11,12 @@ Contents:
 
 - [Install](#install)
 - [Exports](#exports)
+  - [Arithmetic](#arithmetic)
   - [`IntRange`](#intrange)
+  - [`IsAny`](#isany)
+  - [`IsUnion`](#isunion)
   - [`UnionMax`](#unionmax)
   - [`UnionToIntersection`](#uniontointersection)
-  - [`IsUnion`](#isunion)
-  - [Arithmetic](#arithmetic)
   - [Unsafe](#unsafe)
 - [Limitations](#limitations)
 
@@ -26,6 +27,10 @@ npm install --save-dev typescript @logicer/util-types
 ```
 
 ## Exports
+
+### Arithmetic
+
+Re-exports the types from [`ts-arithmetic`](https://github.com/Logicer16/ts-arithmetic)
 
 ### `IntRange`
 
@@ -54,11 +59,39 @@ type BiggestNumbers = IntRange<1, 5001>;
 type OverNineThousand = IntRange<9001, 10000>;
 ```
 
+### `IsAny`
+
+Returns a true if a type is `any` and otherwise false.
+
+```ts
+import type {IsAny} from "@logicer/util-types";
+
+// true
+type IsAnyTrue = IsAny<any>;
+
+// false
+type IsAnyFalse = IsAny<object>;
+```
+
+### `IsUnion`
+
+Returns a true if a type is a union and otherwise false.
+
+```ts
+import type {IsUnion} from "@logicer/util-types";
+
+// true
+type IsUnionTrue = IsUnion<1 | 2 | 3>;
+
+// false
+type IsUnionFalse = IsUnion<1>;
+```
+
 ### `UnionMax`
 
 Find the greatest number in a union of numeric type literals. Accepts a union of numeric type literal and lower bound to begin searching at (inclusive). If the lower bound is greater than the lowest value in the union, `number` will be returned.
 
-The number of items to search is limited to 6328 due to other [typescript limitations](#limitations). If the largest value is not found before this limit is reached, `number` will be returned instead.
+The number of items to search is limited to 8001 due to other [typescript limitations](#limitations). If the largest value is not found before this limit is reached, `number` will be returned instead.
 
 ```ts
 import type {UnionMax} from "@logicer/util-types";
@@ -103,28 +136,10 @@ type Union = A | B | C;
 type Intersection = UnionToIntersection<Union>;
 ```
 
-### `IsUnion`
-
-Returns a true if a type is a union and otherwise false.
-
-```ts
-import type {IsUnion} from "@logicer/util-types";
-
-// true
-type IsUnionTrue = IsUnion<1 | 2 | 3>;
-
-// false
-type IsUnionFalse = IsUnion<1>;
-```
-
-### Arithmetic
-
-Re-exports the types from [`ts-arithmetic`](https://github.com/Logicer16/ts-arithmetic)
-
 ### Unsafe
 
 > [!WARNING]
-> Unsafe contains internal types used to produces the types exported by this package. Use at your own risk.
+> Unsafe contains internal types used to produces the types exported by this package. These types are unsupported and may change at any time. USE AT YOUR OWN RISK
 
 ## Limitations
 

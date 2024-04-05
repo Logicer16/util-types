@@ -1,14 +1,21 @@
 /**
  * @file Testing the `UnionMax` type.
  */
-import type {UnionMax} from "@logicer/util-types";
+import type {IsAny} from "../types/any.js";
+import type {UnionMax} from "../types/UnionMax.js";
 
 // Bounds:
 
-type MaxRangedResult = UnionMax<6327 | 6328>;
-const valid: MaxRangedResult = 6328;
+type MaxRangedResult = UnionMax<8001 | 8002>;
+const valid: MaxRangedResult = 8002;
+// @ts-expect-error TS2322 Is `number`
+const altConstituent: MaxRangedResult = 8001;
+type OneOver = UnionMax<8002 | 8003>;
+type OneOverNumber = number extends OneOver ? true : false;
+const oneOverNumber: OneOverNumber = true;
+type OneOverAny = IsAny<OneOver>;
 // @ts-expect-error TS2322
-const oneOverAny: MaxRangedResult = 10;
+const oneOverAny: OneOverAny = true;
 
 // Documentation Examples:
 

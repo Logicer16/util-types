@@ -1,14 +1,21 @@
 /**
  * @file Testing the `IntRange` type.
  */
-import type {IntRange} from "@logicer/util-types";
+import type {IntRange} from "../types/IntRange.d.ts";
+import type {IsAny} from "../types/any.d.ts";
 
 // Bounds:
 
 type MaxRange = IntRange<0, 7260>;
 const valid: MaxRange[] = [0, 7259];
+// @ts-expect-error TS2322 Is `number`
+const oneOver: MaxRange = 7260;
+type OneOverRange = IntRange<0, 7261>;
+type OneOverNumber = number extends OneOverRange ? true : false;
+const OneOverNumber: OneOverNumber = true;
+type OneOverAny = IsAny<OneOverRange>;
 // @ts-expect-error TS2322
-const oneOverAny: MaxRange = 7260;
+const OneOverAny: OneOverAny = true;
 
 // Documentation Examples:
 

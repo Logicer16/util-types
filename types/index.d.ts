@@ -9,6 +9,7 @@ export namespace Unsafe {
   export type {Unsafe as Arithmetic} from "@logicer/ts-arithmetic";
 }
 
+export * from "./any.d.ts";
 export * from "./UnionMax.d.ts";
 export * from "./IntRange.d.ts";
 export * from "./unionsAndIntersections.d.ts";

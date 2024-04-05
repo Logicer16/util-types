@@ -1,7 +1,9 @@
 /**
  * @file Testing the interactions of between types in the package.
  */
-import type {IntRange, UnionMax} from "@logicer/util-types";
+
+import type {IntRange} from "../types/IntRange.js";
+import type {UnionMax} from "../types/UnionMax.js";
 
 // Documentation Examples:
 

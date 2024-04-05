@@ -1,7 +1,7 @@
 /**
  * @file Testing types related to the use of unions and intersections.
  */
-import {UnionToIntersection} from "../types/unionsAndIntersections.js";
+import type {UnionToIntersection} from "../types/unionsAndIntersections.js";
 
 type A = {one: 1};
 type B = {two: 2};

@@ -25,22 +25,21 @@ export namespace Unsafe {
         >;
 
   /**
-   * Iteratively use a type to enumerate over a given range, producing union whose constituents are the numeric literals of the numbers within that range.
+   * Recursively use a type to enumerate over a given range, producing union whose constituents are the numeric literals of the numbers within that range.
    * @param End The value at which the range terminates (exclusive).
    * @param Start The value at which the range begins (inclusive).
    * @param Fallback The type to return when the depth is exhausted.
    * @param DepthRemaining The remaining recursion depth available for types.
    * @param Accumulator The array to add values to.
    * @param ExpectedLength The computed length the accumulator is expected to be once the entire range has been enumerated.
-   * @param NewStart The computed start value of subsequent iterations.
+   * @param NewStart The computed start value of subsequent recursions.
    * @returns {number} The modified `Accumulator`.
    */
-  export type BigEnumerate<
+  export type RecursivelyEnumerate<
     End extends number,
     Start extends number = 0,
     Fallback = number,
-    // This is due to typescript limitations (cumulative type instantiation).
-    DepthRemaining extends number = 120,
+    DepthRemaining extends number = 1000,
     Accumulator extends number[] = [],
     ExpectedLength extends number = Subtract<End, Start>,
     NewStart extends number = Add<Start, DepthRemaining>
@@ -48,7 +47,7 @@ export namespace Unsafe {
     ? Accumulator[number]
     : DepthRemaining extends 0
       ? Fallback
-      : BigEnumerate<
+      : RecursivelyEnumerate<
           End,
           NewStart,
           Fallback,
@@ -80,6 +79,6 @@ export namespace Unsafe {
  */
 export type IntRange<
   Start extends number,
-  End extends number,
-  Fallback = number
-> = Unsafe.BigEnumerate<End, Start, Fallback>;
+  End extends number
+  // Limited depth due to typescript limitations (cumulative type instantiation).
+> = Unsafe.RecursivelyEnumerate<End, Start, number, 120>;
