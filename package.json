@@ -41,7 +41,7 @@
     "prettier": "3.2.5",
     "ts-plugin-type-coverage": "^2.28.1",
     "type-coverage": "^2.28.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.4"
   },
   "typeCoverage": {
     "atLeast": 100,
