@@ -139,7 +139,7 @@ type Intersection = UnionToIntersection<Union>;
 ### Unsafe
 
 > [!WARNING]
-> Unsafe contains internal types used to produces the types exported by this package. These types are unsupported and may change at any time. USE AT YOUR OWN RISK
+> Unsafe contains internal types used to produce the types exported by this package. These types are unsupported and may change at any time. USE AT YOUR OWN RISK
 
 ## Limitations
 
