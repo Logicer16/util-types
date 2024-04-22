@@ -43,7 +43,7 @@ jobs:
         continue-on-error: true
 
       - name: Annotate ESLint Results
-        uses: ataylorme/eslint-annotate-action@v3-beta
+        uses: ataylorme/eslint-annotate-action@3.0.0
         with:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           report-json: .eslint_report.json
